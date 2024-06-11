@@ -19,6 +19,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/', router);
 
-// No need to specify a port when deploying on Vercel
+const port = process.env.PORT || 3000; // Use the PORT environment variable if it's available, otherwise default to 3000
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
 
 module.exports = app; // Export your app for Vercel deployment
